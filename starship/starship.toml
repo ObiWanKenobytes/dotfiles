@@ -1,0 +1,97 @@
+# ~/.config/starship.toml
+
+# Render a separate prompt line instead of stacking everything on one line
+add_newline = true
+
+# Shared color palette inspired by Catppuccin Mocha
+palette = "catppuccin_mocha"
+
+# Maximum time (ms) Starship may spend computing the prompt
+command_timeout = 1000
+
+# Line 1: powerline-style capsule with OS, directory, git info and time
+# Line 2: blue dot + yellow arrow prompt
+format = """
+[](#3a3332)$os$directory$git_branch$git_status$fill$time[](#3a3332)
+$character"""
+
+# Put all modules that are not explicitly used in `format`
+# on the right-hand side (for shells that support right prompt)
+right_format = """$all"""
+
+# Fills the space between left and right prompt on the first line
+[fill]
+symbol = " "
+
+# --- Operating system icon (Apple / Windows / Linux) ---
+[os]
+disabled = false
+style = "bg:#f97316 fg:#1e1e2e"
+format = "[ $symbol ]($style)[](bg:#facc15 fg:#f97316)"
+
+[os.symbols]
+Macos = ""
+Windows = ""
+Linux = ""
+
+# --- Current directory (shows ~, project path, etc.) ---
+[directory]
+style = "bg:#facc15 fg:#1e1e2e"
+format = "[ $path ]($style)[](bg:#22c55e fg:#facc15)"
+truncation_length = 3
+truncate_to_repo = true
+
+# --- Git branch ---
+[git_branch]
+symbol = " "
+style = "bg:#22c55e fg:#052e16"
+format = "[ $symbol$branch ]($style)"
+truncation_length = 20
+truncation_symbol = "…"
+
+[git_status]
+format = '([$all_status$ahead_behind]($style))'
+style = "fg:peach"
+
+# --- Clock on the first line ---
+[time]
+disabled = false
+time_format = "%T"
+style = "bg:#3a3332 fg:#f5f5f4"
+format = "[  $time ]($style)"
+
+# --- Prompt symbol (blue dot + yellow arrow) ---
+[character]
+success_symbol = "[➜](bold fg:#eab308)"
+error_symbol = "[➜](bold fg:#f97316)"
+vicmd_symbol = "[❮](bold fg:#a5b4fc)"
+format = "[●](fg:#38bdf8) $symbol "
+
+# --- Catppuccin Mocha palette (for use in styles if you want named colors) ---
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
