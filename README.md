@@ -49,7 +49,80 @@ git clone git@github.com:<user>/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 chmod +x setup.sh setup/*.sh
 ./setup.sh
+```
+
+### Linux / WSL
+
+```bash
+git clone git@github.com:<user>/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+chmod +x setup.sh setup/*.sh
+./setup.sh
+```
+
+### Windows (PowerShell + winget)
+
+```powershell
+git clone git@github.com:<user>/dotfiles.git $HOME\dotfiles
+cd $HOME\dotfiles\setup
+.\bootstrap-windows.ps1
+```
+
+---
+
+## Usage
+
+### Atuin
+
+```bash
+atuin search
+# or press CTRL+R
+```
+
+### Zoxide
+
+```bash
+z foo
+zi
+```
+
+### FZF
+
+```bash
+fzf
+fd | fzf
+```
+
+Keybindings:
+
+- `CTRL+T` → fuzzy file browser  
+- `CTRL+R` → history search (atuin + fzf)  
+- `ALT+C` → fuzzy cd into directory  
+
+---
+
+## Layout
+
+```
+dotfiles/
+  setup/
+    bootstrap.sh
+    bootstrap-macos.sh
+    bootstrap-linux.sh
+    bootstrap-wsl.sh
+    bootstrap-windows.ps1
+    Brewfile
+  zshrc/
+    .zshrc
+  starship/
+    starship.toml
+  ghostty/
+    config
+```
+
+---
 
 ## Inspo
+
 - [omerxx](https://omerxx.com)
 - [r/commandline](https://reddit.com/r/commandline)
