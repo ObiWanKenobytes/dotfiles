@@ -1,0 +1,23 @@
+# setup/Brewfile
+
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+
+# --- CLI tools ---
+brew "git"
+brew "zsh"
+brew "stow"
+brew "fzf"        # fuzzy finder
+brew "zoxide"     # smarter cd
+brew "atuin"      # shell history backend
+brew "ripgrep"    # fast grep (rg)
+brew "fd"         # better find
+brew "starship"   # prompt
+
+# --- Terminals / tools ---
+cask "ghostty"          # main terminal
+cask "iterm2"           # alt terminal
+cask "visual-studio-code"
+
+# --- Fonts ---
+cask "font-jetbrains-mono-nerd-font"
