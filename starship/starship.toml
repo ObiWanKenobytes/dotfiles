@@ -81,7 +81,7 @@ format = "[  $time ]($style)"
 [character]
 success_symbol = "[➜](bold fg:#eab308)"
 error_symbol = "[➜](bold fg:#f97316)"
-vicmd_symbol = "[❮](bold fg:#a5b4fc)"
+vimcmd_symbol = "[❮](bold fg:#a5b4fc)"
 format = "[●](fg:#38bdf8) $symbol "
 
 # --- Catppuccin Mocha palette (for use in styles if you want named colors) ---
