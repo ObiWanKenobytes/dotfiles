@@ -49,9 +49,26 @@ format = "[ $symbol$branch ]($style)"
 truncation_length = 20
 truncation_symbol = "…"
 
+# --- Git status (modified/ahead/behind/etc.) ---
+# Powerline-style capsule with icons and counts for each change type.
 [git_status]
-format = '([$all_status$ahead_behind]($style))'
-style = "fg:peach"
+style = "bg:#0ea5e9 fg:#082f49"
+format = "[ $conflicted$stashed$staged$modified$renamed$deleted$untracked$ahead_behind ]($style)[](bg:#3a3332 fg:#0ea5e9)"
+
+# Per-status symbols with counts
+conflicted = "${count} "
+stashed    = "${count} "
+staged     = "${count} "
+modified   = "${count} "
+renamed    = "${count} "
+deleted    = "${count} "
+untracked  = "${count} "
+
+# Ahead/behind/diverged with counts
+ahead      = "⇡${count} "
+behind     = "⇣${count} "
+diverged   = "⇕⇡${ahead_count}⇣${behind_count} "
+up_to_date = ""  # don't print anything when clean
 
 # --- Clock on the first line ---
 [time]
