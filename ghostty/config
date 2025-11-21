@@ -1,0 +1,24 @@
+# ~/.config/ghostty/config
+
+# Theme
+theme = "Catppuccin Mocha"
+
+# Background settings
+background-opacity = 0.70
+background-opacity-cells = true
+background-blur-radius = 20
+
+# Window settings
+window-padding-x = 8
+window-padding-y = 8
+
+# Font/text
+font-family = "JetBrainsMono Nerd Font"
+font-size = 14
+font-style = medium
+font-thicken = true
+
+# Misc
+cursor-style = block
+mouse-hide-while-typing = true
+macos-option-as-alt = true
