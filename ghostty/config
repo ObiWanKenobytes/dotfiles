@@ -1,5 +1,7 @@
 # ~/.config/ghostty/config
 
+working-directory = home
+
 # Theme
 theme = "Catppuccin Mocha"
 

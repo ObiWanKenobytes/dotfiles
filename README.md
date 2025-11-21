@@ -122,6 +122,11 @@ dotfiles/
 
 ---
 
+## Development lazy dog/cheat sheet
+```bash
+- rm -f ~/.config/dotfiles/local.zsh
+```
+
 ## Inspo
 
 - [omerxx](https://omerxx.com)

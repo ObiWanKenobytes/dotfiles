@@ -10,6 +10,16 @@ autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 
+# ---------- Per-machine overrides ----------
+if [[ -f "$HOME/.config/dotfiles/local.zsh" ]]; then
+  source "$HOME/.config/dotfiles/local.zsh"
+fi
+
+# Optional default dev directory: only jump when starting in $HOME
+if [[ -n "${DEFAULT_DEV_DIR:-}" && -d "$DEFAULT_DEV_DIR" && "$PWD" == "$HOME" ]]; then
+  cd "$DEFAULT_DEV_DIR"
+fi
+
 # ---------- Atuin (history backend) ----------
 if command -v atuin >/dev/null 2>&1; then
   eval "$(atuin init zsh)"
