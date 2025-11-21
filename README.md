@@ -42,6 +42,28 @@ It is heavily inspired by blog posts and other people's setup (see #inspo) and r
 
 ## Installation
 
+## About the install setup
+
+## Default dev directory
+
+On all platforms I support an optional “default dev directory”:
+
+- When a shell starts in `$HOME`, it automatically `cd`s into this directory.
+- When you open a terminal “here” in some other folder, the current directory is respected (no auto-cd).
+
+### macOS / Linux / WSL (zsh)
+
+During `./setup.sh` you will be prompted:
+
+```text
+Default dev directory (empty to skip) [e.g. $HOME/dev]:
+```
+
+The path (for example ~/dev) is stored in:
+```text
+~/.config/dotfiles/local.zsh
+```
+
 ### macOS
 
 ```bash
@@ -126,6 +148,12 @@ dotfiles/
 ```bash
 - rm -f ~/.config/dotfiles/local.zsh
 ```
+
+```bash
+cat ~/.config/dotfiles/local.zsh
+```
+
+---
 
 ## Inspo
 

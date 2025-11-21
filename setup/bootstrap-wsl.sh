@@ -15,6 +15,7 @@ if [[ ! -d "$DOTFILES_DIR" ]]; then
   exit 1
 fi
 
+# --- Package install (apt-based WSL distros) ---
 if command -v apt >/dev/null 2>&1; then
   log "Installing base packages via apt (git, zsh, fzf, fd-find, ripgrep, stow, zoxide, atuin)"
   sudo apt update
@@ -24,6 +25,7 @@ else
   log "apt not found, skipping package installation"
 fi
 
+# --- Stow dotfiles ---
 log "Stowing dotfiles from $DOTFILES_DIR"
 cd "$DOTFILES_DIR"
 
