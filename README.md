@@ -64,6 +64,24 @@ The path (for example ~/dev) is stored in:
 ~/.config/dotfiles/local.zsh
 ```
 
+This file is loaded automatically from `.zshrc`:
+
+```zsh
+# Load per-machine overrides
+if [[ -f "$HOME/.config/dotfiles/local.zsh" ]]; then
+  source "$HOME/.config/dotfiles/local.zsh"
+fi
+
+# Auto-cd only when starting in $HOME
+if [[ -n "${DEFAULT_DEV_DIR:-}" && -d "$DEFAULT_DEV_DIR" && "$PWD" == "$HOME" ]]; then
+  cd "$DEFAULT_DEV_DIR"
+fi
+```
+
+This ensures:
+- Normal terminal start → jumps to your default dev directory
+- “Open here” in Finder/VS Code → stays in that folder (no auto-cd)
+
 ### macOS
 
 ```bash
@@ -89,6 +107,19 @@ git clone git@github.com:<user>/dotfiles.git $HOME\dotfiles
 cd $HOME\dotfiles\setup
 .\bootstrap-windows.ps1
 ```
+
+During `bootstrap-windows.ps1` you will also be prompted for a default dev directory.
+If provided, the script writes both the environment variable and auto-cd logic into your PowerShell profile:
+
+```powershell
+$Env:DEFAULT_DEV_DIR = "C:\Users\<user>\dev"
+$defaultDevDir = $Env:DEFAULT_DEV_DIR
+if ($defaultDevDir -and (Get-Location).Path -eq $HOME -and (Test-Path $defaultDevDir)) {
+    Set-Location $defaultDevDir
+}
+```
+
+This matches the behavior on zsh/macOS/Linux/WSL.
 
 ---
 
@@ -146,11 +177,21 @@ dotfiles/
 
 ## Development lazy dog/cheat sheet
 ```bash
+# Remove local files to re run setup.sh for testing
 - rm -f ~/.config/dotfiles/local.zsh
 ```
 
 ```bash
+# Open local file to check result from setup
 cat ~/.config/dotfiles/local.zsh
+```
+
+```bash
+# Show your PowerShell profile location (Windows)
+echo $PROFILE
+
+# Inspect PowerShell profile content (Windows)
+cat $PROFILE
 ```
 
 ---
