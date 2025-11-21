@@ -1,4 +1,4 @@
-# bootstrap-windows.ps1
+# setup/bootstrap-windows.ps1
 # Run in an elevated PowerShell (Run as Administrator) for winget installs
 
 Set-StrictMode -Version Latest

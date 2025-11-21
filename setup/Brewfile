@@ -1,8 +1,5 @@
 # setup/Brewfile
 
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-
 # --- CLI tools ---
 brew "git"
 brew "zsh"
@@ -15,8 +12,8 @@ brew "fd"         # better find
 brew "starship"   # prompt
 
 # --- Terminals / tools ---
-cask "ghostty"          # main terminal
-cask "iterm2"           # alt terminal
+cask "ghostty"               # main terminal
+cask "iterm2"                # alt terminal
 cask "visual-studio-code"
 
 # --- Fonts ---

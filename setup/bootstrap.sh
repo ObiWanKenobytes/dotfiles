@@ -2,12 +2,19 @@
 set -euo pipefail
 
 BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
-# Shared logging function
+# Root of the dotfiles repo = one level up from setup/
+DOTFILES_DIR="${DOTFILES_DIR:-$(cd "$BASE_DIR/.." && pwd)}"
+
+# Shared logging
 # shellcheck source=/dev/null
 source "$BASE_DIR/log.sh"
 
+log "Dotfiles directory: $DOTFILES_DIR"
+
 OS="$(uname -s)"
 log "Detected OS: $OS"
+
+export DOTFILES_DIR
 
 case "$OS" in
   Darwin)
@@ -15,7 +22,7 @@ case "$OS" in
     exec "$BASE_DIR/bootstrap-macos.sh"
     ;;
   Linux)
-    # Enkel WSL-detektering: /proc/version innehåller "Microsoft"
+    # WSL detection: /proc/version contains "Microsoft"
     if grep -qi microsoft /proc/version 2>/dev/null; then
       log "Detected WSL environment"
       exec "$BASE_DIR/bootstrap-wsl.sh"

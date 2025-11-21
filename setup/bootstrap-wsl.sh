@@ -5,9 +5,10 @@ BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck source=/dev/null
 source "$BASE_DIR/log.sh"
 
-DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
+DOTFILES_DIR="${DOTFILES_DIR:?DOTFILES_DIR must be set}"
 
 log "Bootstrapping WSL (Linux under Windows)"
+log "Using DOTFILES_DIR=$DOTFILES_DIR"
 
 if [[ ! -d "$DOTFILES_DIR" ]]; then
   log "Dotfiles directory '$DOTFILES_DIR' not found"
