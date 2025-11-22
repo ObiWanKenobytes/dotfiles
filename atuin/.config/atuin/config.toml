@@ -1,0 +1,42 @@
+# ~/.config/atuin/config.toml
+
+# --- Sync & backend ---
+auto_sync = true
+sync_frequency = "10m"
+update_check = true
+
+# --- UI / behaviour ---
+style = "compact"
+inline_height = 20
+show_preview = true
+max_preview_height = 4
+show_help = false
+
+# Filter mode for shell up-arrow: history within current dir
+filter_mode_shell_up_key_binding = "directory"
+
+# Enable workspaces (separate histories per project/directory)
+workspaces = true
+
+# macOS-friendly shortcuts
+ctrl_n_shortcuts = true
+
+# Run selected command directly on Enter, tab to edit
+enter_accept = true
+
+# Keymap mode: "emacs" or "vim"
+keymap_mode = "emacs"
+
+# --- Stats: what to track ---
+[stats]
+common_subcommands = [
+  "git", "docker", "npm", "pnpm", "go", "tmux"
+]
+common_prefix = ["sudo"]
+
+# --- Sync v2 + dotfiles  ---
+[sync]
+records = true
+
+[dotfiles]
+enabled = true
