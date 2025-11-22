@@ -16,11 +16,18 @@ if [[ ! -d "$DOTFILES_DIR" ]]; then
 fi
 
 # --- Package install (apt-based WSL distros) ---
+APTFILE="$BASE_DIR/Aptfile"
+
 if command -v apt >/dev/null 2>&1; then
-  log "Installing base packages via apt (git, zsh, fzf, fd-find, ripgrep, stow, zoxide, atuin)"
-  sudo apt update
-  sudo apt install -y git zsh fzf fd-find ripgrep stow zoxide atuin || \
-    log "Some apt packages could not be installed; continue manually if needed"
+  log "Installing base packages via apt from $APTFILE"
+  if [[ -f "$APTFILE" ]]; then
+    mapfile -t pkgs < "$APTFILE"
+    sudo apt update
+    sudo apt install -y "${pkgs[@]}" || \
+      log "Some apt packages could not be installed; continue manually if needed"
+  else
+    log "No Aptfile found at $APTFILE, skipping apt install"
+  fi
 else
   log "apt not found, skipping package installation"
 fi
@@ -35,6 +42,7 @@ STOW_PACKAGES=(
   fzf
   zoxide
   atuin
+  tmux
 )
 
 for pkg in "${STOW_PACKAGES[@]}"; do

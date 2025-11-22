@@ -5,6 +5,7 @@ BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck source=/dev/null
 source "$BASE_DIR/log.sh"
 
+# DOTFILES_DIR sätts i bootstrap.sh och exporteras där
 DOTFILES_DIR="${DOTFILES_DIR:?DOTFILES_DIR must be set}"
 
 log "Bootstrapping macOS"
@@ -32,6 +33,7 @@ else
   log "No Brewfile found at $BREWFILE, skipping brew bundle"
 fi
 
+
 # --- Stow dotfiles ---
 log "Stowing dotfiles from $DOTFILES_DIR"
 cd "$DOTFILES_DIR"
@@ -39,10 +41,10 @@ cd "$DOTFILES_DIR"
 STOW_PACKAGES=(
   zshrc
   starship
-  ghostty
   fzf
   zoxide
   atuin
+  tmux
 )
 
 for pkg in "${STOW_PACKAGES[@]}"; do

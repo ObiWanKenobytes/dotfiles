@@ -10,6 +10,7 @@ brew "atuin"      # shell history backend
 brew "ripgrep"    # fast grep (rg)
 brew "fd"         # better find
 brew "starship"   # prompt
+brew "tmux"       # terminal multiplexer
 
 # --- Terminals / tools ---
 cask "ghostty"               # main terminal
