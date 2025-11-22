@@ -175,25 +175,52 @@ dotfiles/
 
 ---
 
-## Development lazy dog/cheat sheet
+## Troubleshooting / Reset Guide
+
+### Verify stow symlinks
+Check that `.zshrc` is correctly symlinked:
 ```bash
-# Remove local files to re run setup.sh for testing
-- rm -f ~/.config/dotfiles/local.zsh
+ls -l ~/.zshrc
 ```
 
+Expected:
+
 ```bash
-# Open local file to check result from setup
+~/.zshrc -> /Users/<user>/code/dotfiles/zshrc/.zshrc
+```
+
+### Reset dotfiles before re-running setup
+If you need to test the bootstrap flow from scratch:
+
+```bash
+rm -f ~/.zshrc
+rm -f ~/.config/dotfiles/local.zsh
+rm -f ~/.config/atuin/config.toml
+
+stow -D -t "$HOME" zshrc || true
+stow -D -t "$HOME" atuin || true
+stow -D -t "$HOME" zoxide || true
+stow -D -t "$HOME" fzf || true
+
+cd ~/code/dotfiles
+./setup.sh
+```
+
+This fully resets symlinks and local overrides.
+
+---
+
+### Common commands
+Check default dev directory:
+```bash
 cat ~/.config/dotfiles/local.zsh
 ```
 
-```bash
-# Show your PowerShell profile location (Windows)
+Inspect PowerShell profile (Windows):
+```powershell
 echo $PROFILE
-
-# Inspect PowerShell profile content (Windows)
 cat $PROFILE
 ```
-
 ---
 
 ## Inspo
