@@ -5,7 +5,6 @@ BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck source=/dev/null
 source "$BASE_DIR/log.sh"
 
-# DOTFILES_DIR sätts i bootstrap.sh och exporteras där
 DOTFILES_DIR="${DOTFILES_DIR:?DOTFILES_DIR must be set}"
 
 log "Bootstrapping macOS"
@@ -41,15 +40,15 @@ STOW_PACKAGES=(
   zshrc
   starship
   ghostty
-  # fzf
-  # zoxide
-  # atuin
+  fzf
+  zoxide
+  atuin
 )
 
 for pkg in "${STOW_PACKAGES[@]}"; do
   if [[ -d "$pkg" ]]; then
-    log "Stowing $pkg"
-    stow "$pkg"
+    log "Stowing $pkg -> $HOME"
+    stow -t "$HOME" "$pkg"
   else
     log "Skipping $pkg (directory not found)"
   fi
