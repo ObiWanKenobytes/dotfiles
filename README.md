@@ -5,9 +5,10 @@ It is heavily inspired by blog posts and other people's setup (see #inspo) and r
 
 - Ghostty + Catppuccin Mocha + JetBrainsMono Nerd Font
 - zsh + starship prompt
-- atuin (shell history sync + search)
-- zoxide (smart `cd`)
+- atuin
+- zoxide
 - fzf (fuzzy finder + keybindings)
+- tmux (for zsh)
 - bootstrap scripts for macOS, Linux, WSL, Windows
 
 ---
@@ -33,6 +34,16 @@ It is heavily inspired by blog posts and other people's setup (see #inspo) and r
   - `fzf` for fuzzy-finding files, history, dirs
   - `ripgrep (rg)` for fast text search
   - `fd` as better `find`
+
+- **tmux**
+  - `tmux` – start tmux
+  - `tmux new -s dev` – new session named `dev`
+  - `tmux attach -t dev` – re-attach to session `dev`
+  - Inside tmux:
+    - `Ctrl-b "` – split horizontally
+    - `Ctrl-b %` – split vertically
+    - `Alt-h/j/k/l` – move between panes (from `.tmux.conf`)
+    - `Ctrl-b d` – detach (leave session running)
 
 - **Terminal**
   - Ghostty (macOS) with Catppuccin Mocha theme, blur, padding
@@ -196,11 +207,13 @@ If you need to test the bootstrap flow from scratch:
 rm -f ~/.zshrc
 rm -f ~/.config/dotfiles/local.zsh
 rm -f ~/.config/atuin/config.toml
+rm -f ~/.tmux.conf
 
 stow -D -t "$HOME" zshrc || true
 stow -D -t "$HOME" atuin || true
 stow -D -t "$HOME" zoxide || true
 stow -D -t "$HOME" fzf || true
+stow -D -t "$HOME" tmux || true
 
 cd ~/code/dotfiles
 ./setup.sh
